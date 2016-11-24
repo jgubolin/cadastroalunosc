@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<string.h>
+struct aluno{
+		int nome;
+		int minuto;
+		int segundo;
+};
+
+int main (void)
+{
+	void receberHorarios(struct aluno lista[5]);
+	void printfHorarios(struct aluno lista[5]);
+	struct aluno listaHorarios[5];
+	
+	receberHorarios(listaHorarios);
+	printfHorarios(listaHorarios);
+	
+	system("pause");
+	return 0;
+}
+void receberHorarios (struct aluno lista [5]){
+
+	int i;
+	for (i = 0; i < 5; ++i) {
+		printf("Digite o %i aluno(hh:mm:ss) : ", i + 1);
+		scanf("%i : %i : %i", 	&lista[i].nome,
+								&lista[i].minuto,
+								&lista[i].segundo);
+		}
+}
+void printfHorarios(struct aluno lista[5]){
+	
+	int i;
+	for ( i = 0; i < 5; ++i){
+		printf("Aluno %i\n Nome = %i\n Matricula = %i\n Media = %i\n", i + 1,
+													lista[i].nome,
+													lista[i].minuto,
+													lista[i].segundo);
+	}
+}
