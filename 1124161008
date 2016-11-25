@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<string.h>
+struct aluno{//define tipo de dados da estrutura aluno
+		char str1[100];
+		int matricula;
+		int media;
+};
+
+int main (void)
+{
+	void receberCadastro(struct aluno lista[5]);//chamada da função receberCadastro de Alunos
+	void printfCadastro(struct aluno lista[5]);//chamada da função printfCadastro de Alunos
+	struct aluno listaCadastro[5];
+	
+	receberCadastro(listaCadastro);
+	printfCadastro(listaCadastro);
+	
+	system("pause");
+	return 0;
+}
+void receberCadastro (struct aluno lista [5]){//define entrada de dados para a estrutura
+
+	int i;
+	for (i = 0; i < 5; ++i) {
+		printf("%i aluno\n nome\n matricula\n media\n ", i + 1);
+		scanf("%s\n %i\n %i\n", &lista[i].str1,
+								&lista[i].matricula,
+								&lista[i].media);
+		}
+}
+void printfCadastro(struct aluno lista[5]){//define a saída de dados da estrutura
+	
+	int i;
+	for ( i = 0; i < 5; ++i){
+		printf("Aluno %i\n Nome = %s\n Matricula = %i\n Media = %i\n", i + 1,
+													lista[i].str1,
+													lista[i].matricula,
+													lista[i].media);
+	}
+}
