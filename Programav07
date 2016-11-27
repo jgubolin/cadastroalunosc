@@ -1,0 +1,70 @@
+#include<stdio.h>
+#include<string.h>
+#include <windows.h>
+#define NALUNOS 1
+
+
+struct aluno{//define tipo de dados da estrutura aluno
+	char str1[100];
+	int matricula, resp;
+	float nota1, nota2, nota3, nota4, media;
+};
+
+int main (void)
+{
+	int resp;
+	do //loop para cadastrar mais alunos ou sair do programa
+	{
+	void receberCadastro(struct aluno lista[NALUNOS]);//chamada da função receberCadastro de Alunos
+	void mediaCadastro(struct aluno lista [NALUNOS]);//chamada função que calcula media
+	void printfCadastro(struct aluno lista[NALUNOS]);//chamada da função printfCadastro de Alunos
+	struct aluno listaCadastro[NALUNOS];
+	
+	receberCadastro(listaCadastro);
+	
+	mediaCadastro(listaCadastro);
+	
+	printfCadastro(listaCadastro);
+	
+	printf("Digite 1 para cadastrar mais alunos ou 2 para sair\n");
+	scanf("%d", &resp);
+		
+	}while (resp==1);
+
+	system("pause");
+	return 0;
+}
+void receberCadastro (struct aluno lista [NALUNOS]){//função da entrada de dados para a estrutura
+
+	int i;
+	for (i = 0; i < NALUNOS; ++i) {
+		printf("%i aluno\n nome\n matricula\n nota1\n nota2\n nota3\n nota4\n", i + 1);
+		scanf("%s\n %i\n %f\n %f\n %f\n %f", 	
+									&lista[i].str1,
+									&lista[i].matricula,
+									&lista[i].nota1,
+									&lista[i].nota2,
+									&lista[i].nota3,
+									&lista[i].nota4,
+									&lista[i].media);
+		}
+}
+void mediaCadastro ( struct aluno *lista ) { //função para cálculo de media individual
+    int i;
+    for ( i = 0; i < NALUNOS; ++i )
+    lista[i].media = (lista[i].nota1 * 1 + lista[i].nota2 * 2 + lista[i].nota3 * 3 + lista[i].nota4 * 4) / 10;
+}
+void printfCadastro(struct aluno lista[NALUNOS]){//função da saída de dados da estrutura
+	
+	int i;
+	for ( i = 0; i < NALUNOS; ++i){
+		printf("Aluno %i\n Nome = %s\n Matricula = %i\n Nota1 = %f\n Nota2 = %f\n Nota3 = %f\n Nota4 = %f\nMedia = %f\n", i + 1,
+													lista[i].str1,
+													lista[i].matricula,
+													lista[i].nota1,
+													lista[i].nota2,
+													lista[i].nota3,
+													lista[i].nota4,
+													lista[i].media);
+	}
+}
